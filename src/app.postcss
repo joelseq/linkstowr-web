@@ -1,0 +1,17 @@
+/*place global styles here */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  @apply h-full overflow-hidden;
+}
+
+:root {
+  --theme-rounded-container: theme(borderRadius.md);
+  --theme-rounded-base: theme(borderRadius.sm);
+  --theme-font-family-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
