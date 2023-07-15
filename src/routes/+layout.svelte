@@ -78,7 +78,7 @@
             <NavLink>Logout</NavLink>
           </form>
         {/if}
-        <NavLink href="https://github.com/skeletonlabs/skeleton" target="_blank" rel="noreferrer">
+        <NavLink href="https://github.com/joelseq/linkshelf-web" target="_blank" rel="noreferrer">
           <Fa size="2x" icon={faGithub} />
         </NavLink>
       </svelte:fragment>
