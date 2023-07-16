@@ -69,7 +69,7 @@
               <div class="bg-slate-200 rounded-sm p-6 relative my-2">
                 <button
                   use:clipboard={accessToken}
-                  class="btn absolute top-1 right-1"
+                  class="btn bg-transparent absolute top-1 right-1"
                   aria-label="Copy to clipboard"
                 >
                   <Fa icon={faCopy} />

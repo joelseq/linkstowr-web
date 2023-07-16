@@ -1,43 +1,44 @@
 <script>
-  import Step from '$lib/components/Step.svelte';
+  import extScreenshot from '$lib/assets/linkshelf-chrome.png';
+  import pluginVideo from '$lib/assets/linkshelf-obsidian.webm';
+  import PromoRow from '$lib/components/PromoRow.svelte';
 </script>
 
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 
-<div class="container max-w-3xl h-full mx-auto flex p-8">
-  <div class="my-16 space-y-5 text-start flex flex-col">
-    <h2 class="h2 hero-text">
-      LinkShelf is a free and open source tool to easily save links from your browser and import it
-      into <a href="https://obsidian.md/" target="_blank">Obsidian.</a>
-    </h2>
-    <h3 class="h3">To get started:</h3>
-    <Step>
-      <p class="text-xl">
-        1. <a class="underline" href="/signup">Create an account</a> and generate an access token.
-      </p>
-    </Step>
-    <Step>
-      <p class="text-xl">2. Install the LinkShelf Chrome Extension.</p>
-    </Step>
-    <Step>
-      <p class="text-xl">3. Insert the access token you generated.</p>
-    </Step>
-    <Step>
-      <p class="text-xl">4. Save your first link.</p>
-    </Step>
-    <Step>
-      <p class="text-xl">5. Install the LinkShelf Obsidian plugin.</p>
-    </Step>
-    <Step>
-      <p class="text-xl">6. In the plugin settings, add your access token.</p>
-    </Step>
-    <Step>
-      <p class="text-xl">
-        7. From the command palette or the sidebar ribbon, run the Sync command.
-      </p>
-    </Step>
+<div class="container max-w-4xl mx-auto flex p-8">
+  <div class="my-16 text-start flex flex-col">
+    <h1 class="h1 hero-text mb-12">Effortlessly save and organize your web links in Obsidian.</h1>
+    <h3 class="h3 sub-hero-text mb-10">
+      LinkSaver is a free, open source and privacy-friendly set of tools designed to make it
+      extremely easy to capture and store your valuable online resources in a structured and
+      meaningful way.
+    </h3>
     <a class="btn btn-xl variant-filled w-[240px]" href="/signup"> Sign Up </a>
   </div>
+</div>
+<div class="container max-w-6xl mx-auto mb-16">
+  <PromoRow direction="left-to-right">
+    <img
+      slot="image"
+      alt="Screenshot of the LinkShelf Chrome extension for saving a link"
+      src={extScreenshot}
+    />
+    <p slot="text" class="text-2xl text-gray-600">
+      Use the Chrome extension to save a link along with a helpful note. LinkShelf will only store
+      the links until they get synced to Obsidian.
+    </p>
+  </PromoRow>
+  <div class="my-8 h-1" />
+  <PromoRow direction="right-to-left">
+    <video slot="image" autoplay loop muted>
+      <source src={pluginVideo} type="video/webm" />
+    </video>
+    <p slot="text" class="text-2xl text-gray-600">
+      Use the Obsidian plugin to sync to your vault. Once the sync is complete, LinkShelf will clear
+      all the links ensuring that your vault is the only long term home for your links!
+    </p>
+  </PromoRow>
 </div>
 
 <style>
@@ -45,6 +46,10 @@
 		@apply flex relative flex-col;
 	} */
   .hero-text {
-    line-height: 3rem;
+    line-height: 3.5rem;
+  }
+
+  .sub-hero-text {
+    line-height: 2rem;
   }
 </style>

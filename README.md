@@ -1,22 +1,13 @@
-# create-svelte
+# LinkShelf Web App
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+Web App for creating an account and generating an access token which can be used to save links from a Chromium based browser directly into Obsidian.
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+In order to run the local development setup for the web app, you will also need to run the server locally. You can follow the
+instructions in the [API repo's README](https://github.com/joelseq/linkshelf-api) for how to do that.
+
+After you've got the server setup and running, install the dependencies for this repo with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
 npm run dev
@@ -34,5 +25,3 @@ npm run build
 ```
 
 You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
