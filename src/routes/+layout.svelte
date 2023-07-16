@@ -148,13 +148,13 @@
         </NavLink>
       </svelte:fragment>
       <svelte:fragment slot="trail">
-        <div class="relative hidden lg:block">
+        <div class="relative hidden lg:flex align-top">
           {#if !data.user}
             <NavLink href="/login">Login</NavLink>
             <NavLink href="/signup">Sign Up</NavLink>
           {:else}
             <NavLink href="/user/settings">Settings</NavLink>
-            <form action="/logout" method="POST">
+            <form class="flex" action="/logout" method="POST">
               <NavLink>Logout</NavLink>
             </form>
           {/if}

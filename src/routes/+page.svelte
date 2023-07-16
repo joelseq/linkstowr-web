@@ -12,7 +12,7 @@
   <div class="my-16 text-start flex flex-col">
     <h1 class="h1 hero-text mb-12">Effortlessly save and organize your web links in Obsidian.</h1>
     <h3 class="h3 sub-hero-text mb-10">
-      LinkSaver is a free, open source and privacy-friendly set of tools designed to make it
+      LinkShelf is a free, open source and privacy-friendly set of tools designed to make it
       extremely easy to capture and store your valuable online resources in a structured and
       meaningful way.
     </h3>
