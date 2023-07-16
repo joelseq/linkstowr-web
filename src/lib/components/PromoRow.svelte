@@ -7,11 +7,13 @@
     <div class="col-span-2">
       <slot name="image" />
     </div>
-    <div class="col-span-1 self-center justify-center px-8">
+    <div class="col-span-2 md:col-span-1 self-center justify-center px-8 mt-4 md:mt-0">
       <slot name="text" />
     </div>
   {:else}
-    <div class="col-span-1 self-center justify-center px-8 md:order-first order-last">
+    <div
+      class="col-span-2 md:col-span-1 self-center justify-center px-8 mt-4 md:mt-0 md:order-first order-last"
+    >
       <slot name="text" />
     </div>
     <div class="col-span-2">

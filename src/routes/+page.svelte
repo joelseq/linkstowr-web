@@ -2,6 +2,8 @@
   import extScreenshot from '$lib/assets/linkshelf-chrome.png';
   import pluginVideo from '$lib/assets/linkshelf-obsidian.webm';
   import PromoRow from '$lib/components/PromoRow.svelte';
+
+  const textClasses = 'text-xl md:text-2xl text-gray-600';
 </script>
 
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
@@ -24,7 +26,7 @@
       alt="Screenshot of the LinkShelf Chrome extension for saving a link"
       src={extScreenshot}
     />
-    <p slot="text" class="text-2xl text-gray-600">
+    <p slot="text" class={textClasses}>
       Use the Chrome extension to save a link along with a helpful note. LinkShelf will only store
       the links until they get synced to Obsidian.
     </p>
@@ -34,7 +36,7 @@
     <video slot="image" autoplay loop muted>
       <source src={pluginVideo} type="video/webm" />
     </video>
-    <p slot="text" class="text-2xl text-gray-600">
+    <p slot="text" class={textClasses}>
       Use the Obsidian plugin to sync to your vault. Once the sync is complete, LinkShelf will clear
       all the links ensuring that your vault is the only long term home for your links!
     </p>

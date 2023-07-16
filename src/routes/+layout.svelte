@@ -6,22 +6,100 @@
   import '../preflight.css';
   // Most of your app wide CSS should be put in this file
   import '../app.postcss';
-  import { AppShell, AppBar, Modal, Toast } from '@skeletonlabs/skeleton';
+  import {
+    AppShell,
+    AppBar,
+    Modal,
+    Toast,
+    Drawer,
+    drawerStore,
+    type DrawerSettings,
+  } from '@skeletonlabs/skeleton';
   import Fa from 'svelte-fa/src/fa.svelte';
   import NavLink from '$lib/components/NavLink.svelte';
   import { faGithub } from '@fortawesome/free-brands-svg-icons';
+  import { faBars } from '@fortawesome/free-solid-svg-icons';
 
   export let data;
+
+  function drawerOpen(): void {
+    const s: DrawerSettings = { id: 'sidenav', width: 'max-w-xs' };
+    drawerStore.open(s);
+  }
 </script>
+
+<svelte:head>
+  <!-- HTML Meta Tags -->
+  <title>LinkShelf — Save links to Obsidian</title>
+  <meta name="description" content="Effortlessly save and organize your web links in Obsidian" />
+  <meta name="keywords" content="linkshelf, obsidian, bookmarks, links, open source" />
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://linkshelf.app" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="LinkShelf" />
+  <meta
+    property="og:description"
+    content="Effortlessly save and organize your web links in Obsidian"
+  />
+  <meta property="og:image" content="/og-banner.png" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="twitter:domain" content="linkshelf.app" />
+  <meta property="twitter:url" content="https://linkshelf.app" />
+  <meta name="twitter:title" content="LinkShelf" />
+  <meta
+    name="twitter:description"
+    content="Effortlessly save and organize your web links in Obsidian"
+  />
+  <meta name="twitter:image" content="/og-banner.png" />
+
+  <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+</svelte:head>
 
 <Modal />
 <Toast position="tr" />
+<Drawer>
+  <section class="p-4 space-y-4 overflow-y-auto min-w-[250px]">
+    <nav class="text-center">
+      <ul>
+        {#if !data.user}
+          <li on:keypress on:click={drawerStore.close}>
+            <NavLink href="/login">Login</NavLink>
+          </li>
+          <li on:keypress on:click={drawerStore.close}>
+            <NavLink href="/signup">Sign Up</NavLink>
+          </li>
+        {:else}
+          <li on:keypress on:click={drawerStore.close}>
+            <NavLink href="/user/settings">Settings</NavLink>
+          </li>
+          <li on:keypress on:click={drawerStore.close}>
+            <form action="/logout" method="POST">
+              <NavLink>Logout</NavLink>
+            </form>
+          </li>
+        {/if}
+        <li on:keypress on:click={drawerStore.close}>
+          <NavLink href="https://github.com/joelseq/linkshelf-web" target="_blank" rel="noreferrer">
+            <Fa size="2x" icon={faGithub} />
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  </section>
+</Drawer>
+
 <!-- App Shell -->
 <AppShell>
   <svelte:fragment slot="header">
     <!-- App Bar -->
     <AppBar padding="p-1">
       <svelte:fragment slot="lead">
+        <button on:click={drawerOpen} class="btn-icon btn-icon-sm bg-transparent lg:!hidden">
+          <Fa icon={faBars} />
+        </button>
         <NavLink href="/">
           <svg
             width="174"
@@ -70,18 +148,20 @@
         </NavLink>
       </svelte:fragment>
       <svelte:fragment slot="trail">
-        {#if !data.user}
-          <NavLink href="/login">Login</NavLink>
-          <NavLink href="/signup">Sign Up</NavLink>
-        {:else}
-          <NavLink href="/user/settings">Settings</NavLink>
-          <form action="/logout" method="POST">
-            <NavLink>Logout</NavLink>
-          </form>
-        {/if}
-        <NavLink href="https://github.com/joelseq/linkshelf-web" target="_blank" rel="noreferrer">
-          <Fa size="2x" icon={faGithub} />
-        </NavLink>
+        <div class="relative hidden lg:block">
+          {#if !data.user}
+            <NavLink href="/login">Login</NavLink>
+            <NavLink href="/signup">Sign Up</NavLink>
+          {:else}
+            <NavLink href="/user/settings">Settings</NavLink>
+            <form action="/logout" method="POST">
+              <NavLink>Logout</NavLink>
+            </form>
+          {/if}
+          <NavLink href="https://github.com/joelseq/linkshelf-web" target="_blank" rel="noreferrer">
+            <Fa size="2x" icon={faGithub} />
+          </NavLink>
+        </div>
       </svelte:fragment>
     </AppBar>
   </svelte:fragment>
