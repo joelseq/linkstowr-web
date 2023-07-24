@@ -3,6 +3,8 @@
   import '@skeletonlabs/skeleton/themes/theme-crimson.css';
   // If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
   import '@skeletonlabs/skeleton/styles/skeleton.css';
+  import { dev } from '$app/environment';
+  import { inject } from '@vercel/analytics';
   import '../preflight.css';
   // Most of your app wide CSS should be put in this file
   import '../app.postcss';
@@ -19,6 +21,8 @@
   import NavLink from '$lib/components/NavLink.svelte';
   import { faGithub } from '@fortawesome/free-brands-svg-icons';
   import { faBars } from '@fortawesome/free-solid-svg-icons';
+
+  inject({ mode: dev ? 'development' : 'production' });
 
   export let data;
 
