@@ -2,6 +2,11 @@
 
 Web App for creating an account and generating an access token which can be used to save links from a Chromium based browser directly into Obsidian.
 
+The other repos:
+[LinkShelf API](https://github.com/joelseq/linkshelf-api)
+[LinkShelf Chrome Extension](https://github.com/joelseq/linkshelf-extension)
+[LinkShelf Obsidian Plugin](https://github.com/joelseq/obsidian-linkshelf)
+
 ## Developing
 
 In order to run the local development setup for the web app, you will also need to run the server locally. You can follow the
