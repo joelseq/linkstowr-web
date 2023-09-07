@@ -34,14 +34,14 @@
 
 <svelte:head>
   <!-- HTML Meta Tags -->
-  <title>LinkShelf — Save links to Obsidian</title>
+  <title>LinkStowr — Save links to Obsidian</title>
   <meta name="description" content="Effortlessly save and organize your web links in Obsidian" />
-  <meta name="keywords" content="linkshelf, obsidian, bookmarks, links, open source" />
+  <meta name="keywords" content="linkstowr, obsidian, bookmarks, links, open source" />
 
   <!-- Facebook Meta Tags -->
-  <meta property="og:url" content="https://linkshelf.app" />
+  <meta property="og:url" content="https://linkstowr.com" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="LinkShelf" />
+  <meta property="og:title" content="LinkStowr" />
   <meta
     property="og:description"
     content="Effortlessly save and organize your web links in Obsidian"
@@ -50,9 +50,9 @@
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta property="twitter:domain" content="linkshelf.app" />
-  <meta property="twitter:url" content="https://linkshelf.app" />
-  <meta name="twitter:title" content="LinkShelf" />
+  <meta property="twitter:domain" content="linkstowr.com" />
+  <meta property="twitter:url" content="https://linkstowr.com" />
+  <meta name="twitter:title" content="LinkStowr" />
   <meta
     name="twitter:description"
     content="Effortlessly save and organize your web links in Obsidian"
@@ -86,7 +86,7 @@
           </li>
         {/if}
         <li on:keypress on:click={drawerStore.close}>
-          <NavLink href="https://github.com/joelseq/linkshelf-web" target="_blank" rel="noreferrer">
+          <NavLink href="https://github.com/joelseq/linkstowr-web" target="_blank" rel="noreferrer">
             <Fa size="2x" icon={faGithub} />
           </NavLink>
         </li>
@@ -162,7 +162,7 @@
               <NavLink>Logout</NavLink>
             </form>
           {/if}
-          <NavLink href="https://github.com/joelseq/linkshelf-web" target="_blank" rel="noreferrer">
+          <NavLink href="https://github.com/joelseq/linkstowr-web" target="_blank" rel="noreferrer">
             <Fa size="2x" icon={faGithub} />
           </NavLink>
         </div>

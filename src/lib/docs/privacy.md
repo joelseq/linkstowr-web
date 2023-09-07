@@ -2,7 +2,7 @@
 
 Effective date: July 20, 2023
 
-Thank you for checking out LinkShelf! This Privacy Policy explains how we collect, and use your information when you use our website, Chrome extension, and Obsidian plugin (collectively referred to as "Services"). By using our Services, you consent to the practices described in this Privacy Policy.
+Thank you for checking out LinkStowr! This Privacy Policy explains how we collect, and use your information when you use our website, Chrome extension, and Obsidian plugin (collectively referred to as "Services"). By using our Services, you consent to the practices described in this Privacy Policy.
 
 ## Information We Collect:
 a. User Data:
