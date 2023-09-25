@@ -34,7 +34,7 @@
           store the links until they get synced to Obsidian.
         </p>
         <a
-          href="https://chrome.google.com/webstore/detail/ahppmgflbaeiphlkkgngijgmfapabgee"
+          href="https://chrome.google.com/webstore/detail/linkstowr/aabkobajeambdejghgegicnhcndhcjpk"
           target="_blank"
           class="mt-4 btn variant-filled"
           ><img class="mr-2" src={chromeIcon} alt="Chrome icon" />Download LinkStowr</a
