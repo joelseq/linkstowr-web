@@ -19,6 +19,7 @@
   } from '@skeletonlabs/skeleton';
   import Fa from 'svelte-fa/src/fa.svelte';
   import NavLink from '$lib/components/NavLink.svelte';
+  import { PlausibleAnalytics } from '@accuser/svelte-plausible-analytics';
   import { faGithub } from '@fortawesome/free-brands-svg-icons';
   import { faBars } from '@fortawesome/free-solid-svg-icons';
 
@@ -61,6 +62,8 @@
 
   <!-- Meta Tags Generated via https://www.opengraph.xyz -->
 </svelte:head>
+
+<PlausibleAnalytics domain="linkstowr.com" apiHost="https://plausible.joelseq.app" />
 
 <Modal />
 <Toast position="tr" />
