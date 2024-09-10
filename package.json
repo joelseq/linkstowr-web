@@ -39,6 +39,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@accuser/svelte-plausible-analytics": "^1.0.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@vercel/analytics": "^1.0.1",
