@@ -42,6 +42,7 @@
     "@accuser/svelte-plausible-analytics": "^1.0.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@lucide/svelte": "^0.525.0",
     "@vercel/analytics": "^1.0.1",
     "axios": "^1.4.0",
     "svelte-fa": "^3.0.4"
