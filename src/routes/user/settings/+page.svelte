@@ -4,13 +4,15 @@
   import { toastStore, type ToastSettings, clipboard } from '@skeletonlabs/skeleton';
   import Fa from 'svelte-fa';
   import { faCopy } from '@fortawesome/free-solid-svg-icons';
+  import { Plus, Trash2 } from 'lucide-svelte';
 
   export let form: ActionData;
   export let data: PageData;
 
   const accessToken = form?.accessToken;
 
-  let isFormShowing = accessToken != null || form?.generateError != null;
+  let showCreateModal = false;
+  let showTokenModal = !!accessToken;
 
   onMount(() => {
     if (form?.deleteError != null) {
@@ -22,108 +24,157 @@
     }
   });
 
-  const showForm = () => {
-    isFormShowing = true;
-  };
-  const hideForm = () => {
-    isFormShowing = false;
-  };
-  const formDone = () => {
-    form = null;
-    isFormShowing = false;
-  };
+  function openCreateModal() {
+    showCreateModal = true;
+  }
+
+  function closeTokenModal() {
+    showTokenModal = false;
+  }
 </script>
 
-<div class="container mx-auto max-w-2xl pt-24">
-  <div class="card p-4">
-    <header class="card-header">
-      <div class="flex justify-between">
-        <h3 class="h3 pt-2">Access Tokens</h3>
-        {#if !isFormShowing}
-          <button type="submit" class="btn variant-filled" on:click={showForm}> New </button>
-        {/if}
+<main class="pt-24 pb-16 px-6">
+  <div class="max-w-4xl mx-auto">
+    <!-- Access Tokens Card -->
+    <div class="bg-white rounded-lg shadow-lg p-8">
+      <div class="flex items-center justify-between mb-6">
+        <h1 class="text-2xl font-bold text-gray-800">Access Tokens</h1>
+        <button
+          on:click={openCreateModal}
+          class="bg-gray-800 text-white px-4 py-2 text-sm font-medium hover:bg-gray-700 transition-colors flex items-center gap-2"
+        >
+          <Plus size={16} />
+          New
+        </button>
       </div>
-    </header>
-    <section class="p-4">
-      {#if isFormShowing}
-        <div class="bg-slate-400 p-4 my-4 rounded-sm">
-          <div class="p-2">
-            {#if !accessToken}
-              <form method="POST" action="?/generate">
-                <label class="label">
-                  <span>Token Name</span>
-                  <input class="input p-2" type="text" placeholder="Token Name" name="tokenName" />
-                </label>
-                <div class="flex flex-wrap justify-end space-x-2 mt-4">
-                  <button type="button" class="btn variant-filled-surface" on:click={hideForm}
-                    >Cancel</button
-                  >
-                  <button type="submit" class="btn variant-filled">Generate</button>
-                </div>
-              </form>
-            {:else}
-              <p>
-                Here's your new Access Token. Keep it safe as you will not see the full token here
-                again.
-              </p>
-              <div class="bg-slate-200 rounded-sm p-6 relative my-2">
-                <button
-                  use:clipboard={accessToken}
-                  class="btn bg-transparent absolute top-1 right-1"
-                  aria-label="Copy to clipboard"
-                >
-                  <Fa icon={faCopy} />
-                </button>
-                {accessToken}
-              </div>
-              <p />
-              <div class="flex flex-wrap justify-end">
-                <button class="btn variant-filled" on:click={formDone}>Done</button>
-              </div>
-            {/if}
 
-            {#if form?.generateError}
-              <aside class="alert variant-ghost">
-                <div class="alert-message">
-                  <h3 class="h3">Error</h3>
-                  <p>{form.generateError}</p>
-                </div>
-              </aside>
-            {/if}
-          </div>
+      {#if data.tokens.length === 0}
+        <div class="text-center py-12">
+          <p class="text-gray-600 mb-4">No access tokens created yet.</p>
+          <p class="text-sm text-gray-500">Create an access token by clicking the "New" button.</p>
+        </div>
+      {:else}
+        <!-- Tokens Table -->
+        <div class="overflow-hidden border border-gray-200 rounded-lg">
+          <table class="w-full">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >Name</th
+                >
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >Prefix</th
+                >
+                <th
+                  class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >Actions</th
+                >
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              {#each data.tokens as token (token.id)}
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                    >{token.name}</td
+                  >
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono"
+                    >lshelf_{token.short_token}</td
+                  >
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+                    <form method="POST" action="?/delete">
+                      <input type="hidden" name="id" value={token.id} />
+                      <button
+                        type="submit"
+                        class="bg-red-600 text-white px-3 py-1 text-xs font-medium hover:bg-red-700 transition-colors flex items-center gap-1 ml-auto"
+                      >
+                        <Trash2 size={12} />
+                        Delete
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              {/each}
+            </tbody>
+          </table>
         </div>
       {/if}
-      {#if data.tokens.length < 1 && !isFormShowing}
-        <p>Create an access token by clicking the "New" button.</p>
-      {/if}
-    </section>
-
-    {#if data.tokens.length > 0}
-      <div class="table-container p-4">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Prefix</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {#each data.tokens as token}
-              <tr>
-                <td>{token.name}</td>
-                <td>lshelf_{token.short_token}</td>
-                <td class="flex justify-end">
-                  <form method="POST" action="?/delete">
-                    <input type="hidden" name="id" value={token.id} />
-                    <button class="btn btn-sm variant-filled-primary">Delete</button>
-                  </form>
-                </td>
-              </tr>
-            {/each}
-          </tbody>
-        </table>
-      </div>
-    {/if}
+    </div>
   </div>
-</div>
+</main>
+
+<!-- Create Token Modal -->
+{#if showCreateModal}
+  <div class="fixed inset-0 bg-black/10 bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">Create Access Token</h2>
+      <form method="POST" action="?/generate" class="space-y-4">
+        <div>
+          <label for="tokenName" class="block text-sm font-medium text-gray-700 mb-2">
+            Token Name
+          </label>
+          <input
+            type="text"
+            id="tokenName"
+            name="tokenName"
+            placeholder="Enter token name"
+            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
+            required
+          />
+        </div>
+
+        <div class="flex gap-3 pt-4">
+          <button
+            type="button"
+            on:click={() => (showCreateModal = false)}
+            class="flex-1 bg-gray-200 text-gray-800 py-2 px-4 font-medium hover:bg-gray-300 transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="flex-1 bg-gray-800 text-white py-2 px-4 font-medium hover:bg-gray-700 transition-colors"
+          >
+            Generate
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+{/if}
+
+<!-- Token Display Modal -->
+{#if showTokenModal}
+  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">Your New Access Token</h2>
+
+      <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+        <p class="text-sm text-yellow-800 mb-3">
+          <strong>Important:</strong> Keep this token safe as you will not see the full token here again.
+        </p>
+
+        <div class="flex items-center gap-2 bg-white border border-gray-300 rounded p-3">
+          <code class="flex-1 text-sm font-mono text-gray-800 break-all">{accessToken}</code>
+          <button
+            use:clipboard={accessToken}
+            class="text-gray-500 hover:text-gray-700 transition-colors"
+            title="Copy token"
+          >
+            <Fa icon={faCopy} />
+          </button>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button
+          on:click={closeTokenModal}
+          class="bg-gray-800 text-white py-2 px-6 font-medium hover:bg-gray-700 transition-colors"
+        >
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+{/if}
