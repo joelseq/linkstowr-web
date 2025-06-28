@@ -105,17 +105,19 @@
         keeping your knowledge base organized and accessible.
       </p>
       <div class="flex gap-4">
-        <button
-          class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition-colors"
+        <a
+          href="https://chrome.google.com/webstore/detail/linkstowr/aabkobajeambdejghgegicnhcndhcjpk"
+          target="_blank"
+          class="bg-blue-600 text-white px-6 py-3 hover:bg-blue-700 transition-colors"
         >
           Get Chrome Extension
-        </button>
-        <a href="https://github.com/joelseq/obsidian-linkstowr" target="_blank">
-          <button
-            class="border border-gray-300 text-gray-700 px-6 py-3 rounded hover:bg-gray-50 transition-colors"
-          >
-            Learn More
-          </button>
+        </a>
+        <a
+          href="https://github.com/joelseq/obsidian-linkstowr"
+          target="_blank"
+          class="border border-gray-300 text-gray-700 px-6 py-3 hover:bg-gray-200 transition-colors"
+        >
+          Learn More
         </a>
       </div>
     </div>
