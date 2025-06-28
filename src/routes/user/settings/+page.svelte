@@ -34,7 +34,7 @@
   };
 </script>
 
-<div class="container mx-auto max-w-2xl pt-8">
+<div class="container mx-auto max-w-2xl pt-24">
   <div class="card p-4">
     <header class="card-header">
       <div class="flex justify-between">

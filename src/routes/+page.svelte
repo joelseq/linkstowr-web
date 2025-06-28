@@ -1,4 +1,6 @@
 <script>
+  import { faGear } from '@fortawesome/free-solid-svg-icons';
+  import Fa from 'svelte-fa';
 </script>
 
 <!-- Main Content -->
@@ -50,8 +52,8 @@
             </div>
             <h2 class="text-2xl font-bold mb-4">Sharpen your thinking.</h2>
             <p class="text-gray-300 text-sm mb-6">
-              Obsidian is the private and flexible writing app<br />
-              that adapts to the way you think.
+              The free and flexible app<br />
+              for your private thoughts.
             </p>
           </div>
 
@@ -59,7 +61,7 @@
           <div class="absolute top-20 right-6 bg-white rounded-lg shadow-xl p-4 w-64">
             <div class="flex items-center justify-between mb-3">
               <span class="font-semibold text-gray-800">LinkStowr</span>
-              <button class="text-gray-400 hover:text-gray-600">×</button>
+              <Fa icon={faGear} />
             </div>
             <div class="space-y-3">
               <div>
@@ -108,11 +110,13 @@
         >
           Get Chrome Extension
         </button>
-        <button
-          class="border border-gray-300 text-gray-700 px-6 py-3 rounded hover:bg-gray-50 transition-colors"
-        >
-          Learn More
-        </button>
+        <a href="https://github.com/joelseq/obsidian-linkstowr" target="_blank">
+          <button
+            class="border border-gray-300 text-gray-700 px-6 py-3 rounded hover:bg-gray-50 transition-colors"
+          >
+            Learn More
+          </button>
+        </a>
       </div>
     </div>
   </div>
@@ -157,20 +161,9 @@
 <footer class="bg-white border-t border-gray-200 mt-24 py-12">
   <div class="max-w-6xl mx-auto px-6 text-center">
     <div class="flex items-center justify-center gap-2 mb-4">
-      <div
-        class="w-6 h-6 border-2 border-gray-800 flex items-center justify-center font-mono font-bold text-gray-800 text-sm"
-      >
-        L
-      </div>
+      <img src="/logo.svg" alt="LinkStowr Logo" class="w-6 h-6" />
       <span class="text-lg font-semibold text-gray-800">LinkStowr</span>
     </div>
     <p class="text-gray-600 text-sm">Made with ❤️ for the Obsidian community</p>
   </div>
 </footer>
-
-<!-- Footer -->
-<!-- <footer class="text-center text-gray-400 py-8 border-t mt-16"> -->
-<!--   <a href="https://github.com/joelseq/linkstowr-web" target="_blank" class="mx-2 underline">GitHub</a> -->
-<!--   &middot; -->
-<!--   <a href="/privacy" class="mx-2 underline">Privacy Policy</a> -->
-<!-- </footer> -->

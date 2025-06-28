@@ -38,7 +38,7 @@ export const actions: Actions = {
         },
       );
 
-      if (response.status !== 200 || !response.data.token) {
+      if (response.status > 201 || !response.data.token) {
         let error = 'Failed to sign up user';
 
         if (response.data.error.type === ServerError.UsernameExists) {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Github } from '@lucide/svelte';
+  import { Github } from 'lucide-svelte';
   // The ordering of these imports is critical to your app working properly
   import '@skeletonlabs/skeleton/themes/theme-crimson.css';
   // If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
@@ -60,30 +60,25 @@
     <div class="flex items-center gap-3">
       <!-- Logo recreation -->
       <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-        <div
-          class="w-8 h-8 border-2 border-gray-800 flex items-center justify-center font-mono font-bold text-gray-800"
-        >
-          L
-        </div>
+        <img src="/logo.svg" alt="LinkStowr Logo" class="w-8 h-8" />
         <span class="text-xl font-semibold text-gray-800">LinkStowr</span>
       </a>
     </div>
 
     <nav class="flex items-center gap-6">
       {#if !data.user}
-        <a href="/login">
-          <button class="text-gray-600 hover:text-gray-800 transition-colors"> Login </button>
-        </a>
-        <a href="/signup">
-          <button class="text-gray-600 hover:text-gray-800 transition-colors"> Sign Up </button>
-        </a>
+        <a href="/login" class="text-gray-600 hover:text-gray-800 transition-colors"> Login </a>
+        <a href="/signup" class="text-gray-600 hover:text-gray-800 transition-colors"> Sign Up </a>
       {:else}
-        <a href="/user/settings">
-          <button class="text-gray-600 hover:text-gray-800 transition-colors"> Settings </button>
+        <a href="/user/settings" class="text-gray-600 hover:text-gray-800 transition-colors">
+          Settings
         </a>
         <form action="/logout" method="POST">
-          <button type="submit" class="text-gray-600 hover:text-gray-800 transition-colors">
-            Sign Up
+          <button
+            type="submit"
+            class="logout-button text-gray-600 hover:text-gray-800 transition-colors"
+          >
+            Logout
           </button>
         </form>
       {/if}
@@ -99,3 +94,9 @@
 
   <slot />
 </div>
+
+<style>
+  .logout-button {
+    background: none;
+  }
+</style>
